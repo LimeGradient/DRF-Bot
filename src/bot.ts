@@ -1,6 +1,7 @@
 import { Client, Events, GatewayIntentBits, WebhookClient } from "discord.js"
 import { importTeamCommand } from "./commands/import_team.ts"
 import type SlashCommand from "./commands/command.ts"
+import { getTeamCommand } from "./commands/get_team.ts"
 
 class ExtendedClient extends Client {
     commands: SlashCommand[] = []
@@ -15,6 +16,7 @@ export default class Bot {
         this.client = new ExtendedClient({ intents: [GatewayIntentBits.Guilds ]})
 
         this.client.commands.push(importTeamCommand)
+        this.client.commands.push(getTeamCommand)
 
         this.client.once(Events.ClientReady, (readyClient) => {
             console.log(`Ready! Logged in as ${readyClient.user.tag}`);
