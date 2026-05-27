@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, EmbedBuilder, MessageFlags, SlashCommandBuilder } from "discord.js";
-import SlashCommand from "./command.ts";
+import SlashCommand, { embedAuthor } from "./command.ts";
 import fs from "node:fs"
 import { parseTeam, type Pokemon } from "../showdown/parser.ts";
 import { webhookClient } from "../index.ts";
@@ -47,10 +47,7 @@ export default class ImportTeamCommand extends SlashCommand {
 
             const importedTeamEmbed = new EmbedBuilder()
                 .setTitle(`${interaction.user.displayName} just imported their team!`)
-                .setAuthor({
-                    name: `${interaction.user.displayName}'s Team`,
-                    iconURL: interaction.user.avatarURL() as string
-                })
+                .setAuthor(embedAuthor)
                 .addFields(
                     teamFields
                 )

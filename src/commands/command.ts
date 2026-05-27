@@ -9,3 +9,8 @@ export default class SlashCommand {
         this.execute = execute
     }
 }
+
+export const embedAuthor = {
+    name: "DRF Team Tracker",
+    iconURL: "https://cdn.lifeisstrangefans.com/uploads/media/2022/10/057-Chloe-Classic-1665082539-1721713752.jpg"
+}
