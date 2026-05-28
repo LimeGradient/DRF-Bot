@@ -4,6 +4,8 @@ import path from "node:path"
 import SlashCommand from "./commands/command.ts";
 import { importTeamCommand } from "./commands/import_team.ts";
 import { getTeamCommand } from "./commands/get_team.ts";
+import { createBattleCommand } from "./commands/create_battle.ts";
+import { initializeCommand } from "./commands/initialize.ts";
 
 config({path: path.resolve(".env")})
 
@@ -15,8 +17,10 @@ export async function reloadSlashCommandsDev() {
             Routes.applicationGuildCommands(process.env.DISCORD_CLIENT_ID as string, process.env.DISCORD_GUILD_ID as string),
             {
                 body: [
+                    initializeCommand,
                     importTeamCommand,
-                    getTeamCommand
+                    getTeamCommand,
+                    createBattleCommand
                 ].map((command: SlashCommand) => command.builder.toJSON())
             }
         )

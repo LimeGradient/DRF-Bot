@@ -55,14 +55,6 @@ export default class ImportTeamCommand extends SlashCommand {
             await interaction.reply({
                 embeds: [importedTeamEmbed]
             })
-
-/*             .then(async () => {
-                await interaction.reply({
-                    content: "Your team was successfully imported!",
-                    flags: MessageFlags.Ephemeral
-                })
-            })
-            .catch(console.error) */
         } else {
             await interaction.reply({
                 content: "An unsupported file type was uploaded. To import your team:\n1. Press Export from the Teambuilder page on Pokemon Showdown\n2. Save the contents into a TXT file\n3. Upload using /import_team",
